@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ModelProvider = () => {
+const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -12,8 +12,8 @@ const ModelProvider = () => {
   if (!isMounted) {
     return null;
   } else {
-    return <div>ModelProvider</div>;
+    return <div>ModalProvider</div>;
   }
 };
 
-export default ModelProvider;
+export default ModalProvider;
