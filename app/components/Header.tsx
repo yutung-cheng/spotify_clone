@@ -5,8 +5,14 @@ import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
-import CustomButton from "./CustomButton";
+
 import useAuthModal from "../hooks/useAuthModal";
+import { useUser } from "../hooks/useUser";
+import SignUpButton from "./buttons/SignUpButton";
+import LogInButton from "./buttons/LogInButton";
+import LogoutButton from "./buttons/LogoutButton";
+import CustomButton from "./CustomButton";
+import { FaUserAlt } from "react-icons/fa";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -19,9 +25,8 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
 
   const router = useRouter();
 
-  const handleLogout = () => {
-    // Handle logout later
-  };
+  //Extract the user from OUR useUser Hook.
+  const { user, subscription } = useUser();
 
   return (
     <div
@@ -62,26 +67,32 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           </button>
         </div>
         <div className="flex justify-center items-center gap-x-4">
-          <>
-            {/* Custom Button component - Sign up */}
-            <div>
+          {/* If the user is logged in, we show `Log out` button.
+           * Otherwise, we show `Login` and `Sign up` buttons.
+           */}
+          {user ? (
+            <>
+              {/* Custom Button component - Logout */}
+              <LogoutButton />
+
+              {/* Setting button */}
               <CustomButton
-                onClick={authModal.onOpen}
-                className="bg-transparent text-neutral-300 font-medium"
+                onClick={() => {
+                  router.push("/account");
+                }}
+                className="bg-white px-3 py-3"
               >
-                Sign up
+                <FaUserAlt />
               </CustomButton>
-            </div>
-            {/* Custom Button component - Log in */}
-            <div>
-              <CustomButton
-                onClick={authModal.onOpen}
-                className="bg-white px-6 py-2"
-              >
-                Log in
-              </CustomButton>
-            </div>
-          </>
+            </>
+          ) : (
+            <>
+              {/* Custom Button component - Sign up */}
+              <SignUpButton />
+              {/* Custom Button component - Log in */}
+              <LogInButton />
+            </>
+          )}
         </div>
       </div>
       {children}
