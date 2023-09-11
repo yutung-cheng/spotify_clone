@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import Sidebar from "@/app/components/Sidebar";
 import SupabaseProvider from "./provider/SupabaseProvider";
-import UserProvider from "./hooks/UserProvider";
-import ModelProvider from "./hooks/ModelProvider";
+import UserProvider from "./provider/UserProvider";
+import ModelProvider from "./provider/ModelProvider";
 
 const font = Figtree({ subsets: ["latin"] });
 
