@@ -6,6 +6,7 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import CustomButton from "./CustomButton";
+import useAuthModal from "../hooks/useAuthModal";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -13,6 +14,9 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
+  // Add our auth modal here.
+  const authModal = useAuthModal();
+
   const router = useRouter();
 
   const handleLogout = () => {
@@ -62,9 +66,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             {/* Custom Button component - Sign up */}
             <div>
               <CustomButton
-                onClick={() => {
-                  //Sign up
-                }}
+                onClick={authModal.onOpen}
                 className="bg-transparent text-neutral-300 font-medium"
               >
                 Sign up
@@ -73,9 +75,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             {/* Custom Button component - Log in */}
             <div>
               <CustomButton
-                onClick={() => {
-                  //Log in
-                }}
+                onClick={authModal.onOpen}
                 className="bg-white px-6 py-2"
               >
                 Log in
