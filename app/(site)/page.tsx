@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
+import getSongs from "../actions/getSongs";
+import PageContent from "./content/PageContent";
 
-export default function Home() {
+// This page will not be catch, and the data will always be up-to-date.
+export const revalidate = 0;
+
+export default async function Home() {
+  const songs = await getSongs();
+
   return (
     <div className="h-full w-full bg-neutral-900 rounded-lg overflow-hidden overflow-y-auto">
       <Header>
@@ -21,7 +28,7 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">New Songs</h1>
         </div>
-        <div>List of Songs!</div>
+        <PageContent songs={songs} />
       </div>
     </div>
   );
