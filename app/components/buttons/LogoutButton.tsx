@@ -19,6 +19,7 @@ const LogoutButton: React.FC = () => {
       toast.success("Logged out!");
     }
   };
+
   return (
     <div className="flex gap-x-4 items-center">
       <CustomButton onClick={handleLogout} className="bg-white px-6 py-2">
