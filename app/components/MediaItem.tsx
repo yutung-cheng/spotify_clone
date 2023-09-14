@@ -26,6 +26,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ song, onClick }) => {
       <div className="relative rounded-md min-h-[48px] min-w-[48px] overflow-hidden">
         <Image
           src={imagePath || "/images/liked.png"}
+          priority
           fill
           sizes="100%"
           className="obeject-cover"
