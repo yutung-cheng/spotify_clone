@@ -1,7 +1,10 @@
 "use client";
 
 import SongItem from "@/app/components/SongItem";
+import { useUser } from "@/app/hooks/useUser";
 import { Song } from "@/types";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 interface LikedSongsContentProps {
   songs: Song[];
@@ -10,6 +13,16 @@ interface LikedSongsContentProps {
 const LikedSongContent: React.FC<LikedSongsContentProps> = ({
   songs,
 }) => {
+  const router = useRouter();
+  const { isLoading, user } = useUser();
+
+  useEffect(() => {
+    // Logout will automatically back to home page.
+    if (!isLoading && !user) {
+      router.replace("/");
+    }
+  }, [isLoading, user, router]);
+
   {
     if (songs.length === 0) {
       return (

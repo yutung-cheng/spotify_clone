@@ -51,6 +51,7 @@ export const MyUserContextProvider = (props: Props) => {
   // Get our user's detail.
   const getUserDetails = () =>
     supabase.from("users").select("*").single();
+
   // Get our subscription detail.
   const getSubscription = () =>
     supabase

@@ -11,11 +11,13 @@ import { useUser } from "@/app/hooks/useUser";
 interface LikedButtonProps {
   songId: string;
   title: string;
+  showUnliked: boolean;
 }
 
 const LikedButton: React.FC<LikedButtonProps> = ({
   songId,
   title,
+  showUnliked,
 }) => {
   //get router.
   const router = useRouter();
@@ -96,7 +98,7 @@ const LikedButton: React.FC<LikedButtonProps> = ({
     <button
       onClick={handleLike}
       className={`${
-        isLiked ? "opacity-100" : "opacity-0"
+        isLiked || showUnliked ? "opacity-100" : "opacity-0"
       } group-hover:opacity-100 transition`}>
       <Icon color={isLiked ? "#22c55e" : "white"} size={26} />
     </button>

@@ -15,6 +15,7 @@ const LikedSongs = async () => {
           <div className="flex flex-row md:flex-row sm:flex-row items-center gap-x-5">
             <div className=" bg-red-600 relative aspect-square h-16 w-16 lg:h-32 lg:w-32 md:h-24 md:w-24 sm:h-24 sm:w-24">
               <Image
+                priority
                 fill
                 src="/images/liked.png"
                 alt="Playlist"

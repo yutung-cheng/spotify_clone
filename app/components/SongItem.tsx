@@ -25,6 +25,7 @@ const SongItem: React.FC<SongItemProps> = ({ song, onClick }) => {
         <Image
           className="object-cover"
           fill
+          priority
           sizes="100%"
           src={imagePath || "/images/liked.png"}
           alt="image"
@@ -37,7 +38,11 @@ const SongItem: React.FC<SongItemProps> = ({ song, onClick }) => {
         </p>
       </div>
       <div className="absolute top-4 left-4">
-        <LikedButton songId={song.id} title={song.title} />
+        <LikedButton
+          songId={song.id}
+          title={song.title}
+          showUnliked={false}
+        />
       </div>
       <div className="absolute bottom-24 right-5">
         <PlayButton />

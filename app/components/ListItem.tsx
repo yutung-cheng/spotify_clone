@@ -3,6 +3,10 @@
 import { useRouter } from "next/navigation";
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
+import { useUser } from "../hooks/useUser";
+import useAuthModal from "../hooks/useAuthModal";
+import { useEffect, useState } from "react";
+import { useSessionContext } from "@supabase/auth-helpers-react";
 
 interface ListItemProps {
   image: string;
@@ -12,11 +16,36 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
   const router = useRouter();
+  const { user } = useUser();
+  const authModal = useAuthModal();
+  const { session } = useSessionContext();
+  const [isClicked, setIsClicked] = useState(false);
+  const [logedIn, setLogedIn] = useState(false);
 
   const onClick = () => {
+    setIsClicked(true);
     //Add authentication before push
-    router.push(href);
+    if (!user) {
+      //If not log in, trigger log in dialog.
+      authModal.onOpen();
+    } else {
+      setIsClicked(false);
+      router.push(href);
+    }
   };
+
+  useEffect(() => {
+    if (session && isClicked) {
+      setLogedIn(true);
+    } else {
+      setLogedIn(false);
+    }
+    if (logedIn && isClicked) {
+      setIsClicked(false);
+      router.push(href);
+    }
+  }, [isClicked, session, logedIn, router, href]);
+
   return (
     <button
       onClick={onClick}
@@ -25,6 +54,7 @@ const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
         {/* This Image is imported from `next/Image` library. */}
         <Image
           className="object-cover"
+          priority
           fill
           src={image}
           alt="Image"
