@@ -5,7 +5,10 @@ interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const CustomButton = forwardRef<HTMLButtonElement, CustomButtonProps>(
-  ({ className, children, disabled, type = "button", ...props }, ref) => {
+  (
+    { className, children, disabled, type = "button", ...props },
+    ref
+  ) => {
     return (
       <button
         type={type}
@@ -15,8 +18,7 @@ const CustomButton = forwardRef<HTMLButtonElement, CustomButtonProps>(
         )}
         disabled={disabled}
         ref={ref}
-        {...props}
-      >
+        {...props}>
         {children}
       </button>
     );

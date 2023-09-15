@@ -33,24 +33,21 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
       className={twMerge(
         `h-fit bg-gradient-to-b from-emerald-800 p-6`,
         className
-      )}
-    >
+      )}>
       <div className="w-full mb-4 flex items-center justify-between">
         {/* Web Mode */}
         <div className="hidden md:flex gap-x-2 items-center">
           {/* < button for Web mode */}
           <button
             onClick={() => router.back()}
-            className="rounded-full bg-black flex items-center justify-center hover:opacity-60 transition"
-          >
+            className="rounded-full bg-black flex items-center justify-center hover:opacity-60 transition">
             <RxCaretLeft size={35} className="text-white" />
           </button>
 
           {/* > button for Web mode */}
           <button
             onClick={() => router.forward()}
-            className="rounded-full bg-black flex items-center justify-center hover:opacity-60 transition"
-          >
+            className="rounded-full bg-black flex items-center justify-center hover:opacity-60 transition">
             <RxCaretRight size={35} className="text-white" />
           </button>
         </div>
@@ -80,8 +77,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 onClick={() => {
                   router.push("/account");
                 }}
-                className="bg-white px-3 py-3"
-              >
+                className="bg-white px-3 py-3">
                 <FaUserAlt />
               </CustomButton>
             </>

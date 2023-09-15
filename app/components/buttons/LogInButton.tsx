@@ -7,7 +7,9 @@ const LogInButton: React.FC = () => {
   const authModal = useAuthModal();
   return (
     <div>
-      <CustomButton onClick={authModal.onOpen} className="bg-white px-6 py-2">
+      <CustomButton
+        onClick={authModal.onOpen}
+        className="bg-white px-6 py-2">
         Log in
       </CustomButton>
     </div>

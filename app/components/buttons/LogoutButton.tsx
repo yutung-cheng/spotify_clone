@@ -22,7 +22,9 @@ const LogoutButton: React.FC = () => {
 
   return (
     <div className="flex gap-x-4 items-center">
-      <CustomButton onClick={handleLogout} className="bg-white px-6 py-2">
+      <CustomButton
+        onClick={handleLogout}
+        className="bg-white px-6 py-2">
         Logout
       </CustomButton>
     </div>

@@ -11,7 +11,9 @@ interface SupabaseProviderProps {
 
 // Client Components can be used to trigger the authentication process from event handlers.
 // Visit Supabase website: https://supabase.com/docs/guides/auth/auth-helpers/nextjs#usage-with-typescript
-const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
+const SupabaseProvider: React.FC<SupabaseProviderProps> = ({
+  children,
+}) => {
   const supabaseClient = createClientComponentClient<Database>();
 
   return (

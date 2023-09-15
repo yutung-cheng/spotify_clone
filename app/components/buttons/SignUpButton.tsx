@@ -10,8 +10,7 @@ const SignUpButton: React.FC = () => {
     <div>
       <CustomButton
         onClick={authModal.onOpen}
-        className="bg-transparent text-neutral-300 font-medium"
-      >
+        className="bg-transparent text-neutral-300 font-medium">
         Sign up
       </CustomButton>
     </div>

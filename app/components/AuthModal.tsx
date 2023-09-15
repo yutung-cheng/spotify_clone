@@ -36,8 +36,7 @@ const AuthModal: React.FC = () => {
       title="Welcome Back"
       description="Login to your account"
       isOpen={isOpen}
-      onChange={onChange}
-    >
+      onChange={onChange}>
       {/* And also Email address, Your Password, Sign in button, Forgot password, etc */}
       <Auth
         theme="dark"

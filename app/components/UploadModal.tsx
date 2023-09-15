@@ -55,12 +55,13 @@ const UploadModal: React.FC = () => {
       const uniqueID = uniqid();
 
       //Upload song
-      const { data: songData, error: songError } = await supabaseClient.storage
-        .from("songs")
-        .upload(`song-${values.title}-${uniqueID}`, songFile, {
-          cacheControl: "3600",
-          upsert: false,
-        });
+      const { data: songData, error: songError } =
+        await supabaseClient.storage
+          .from("songs")
+          .upload(`song-${values.title}-${uniqueID}`, songFile, {
+            cacheControl: "3600",
+            upsert: false,
+          });
 
       if (songError) {
         setIsLoading(false); //Break the entire function.
@@ -117,9 +118,10 @@ const UploadModal: React.FC = () => {
       title="Add songs"
       description="Upload music"
       isOpen={uploadModal.isOpen}
-      onChange={onChange}
-    >
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
+      onChange={onChange}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-y-4">
         <Input
           id="title"
           disabled={isLoading}

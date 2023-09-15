@@ -13,7 +13,10 @@ interface LikedButtonProps {
   title: string;
 }
 
-const LikedButton: React.FC<LikedButtonProps> = ({ songId, title }) => {
+const LikedButton: React.FC<LikedButtonProps> = ({
+  songId,
+  title,
+}) => {
   //get router.
   const router = useRouter();
 
@@ -90,7 +93,9 @@ const LikedButton: React.FC<LikedButtonProps> = ({ songId, title }) => {
   };
 
   return !user ? null : (
-    <button onClick={handleLike} className="hover:opacity-75 transition">
+    <button
+      onClick={handleLike}
+      className="hover:opacity-75 transition">
       <Icon color={isLiked ? "#22c55e" : "white"} size={26} />
     </button>
   );

@@ -15,7 +15,9 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
         ? "No Songs found"
         : songs.map((song) => {
             return (
-              <div key={song.id} className="flex items-center gap-x-4 w-full">
+              <div
+                key={song.id}
+                className="flex items-center gap-x-4 w-full">
                 <div className="flex-1">
                   <MediaItem onClick={() => {}} song={song} />
                 </div>

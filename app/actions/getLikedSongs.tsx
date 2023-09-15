@@ -16,8 +16,6 @@ export const getLikedSongs = async () => {
     .eq("user_id", session?.user?.id)
     .order("created_at", { ascending: true });
 
-  console.log("data", data);
-
   if (error) {
     console.log("Error Fetching Data", error);
     return [];

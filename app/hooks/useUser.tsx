@@ -1,4 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 import { User } from "@supabase/auth-helpers-nextjs";
 import { Subscription, UserDetails } from "@/types";
@@ -35,13 +40,17 @@ export const MyUserContextProvider = (props: Props) => {
   const user = useSupaUser();
   const accessToken = session?.access_token ?? null;
   const [isLoadingData, setIsLoadingData] = useState(false);
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-  const [subscription, setSubscription] = useState<Subscription | null>(null);
+  const [userDetails, setUserDetails] = useState<UserDetails | null>(
+    null
+  );
+  const [subscription, setSubscription] =
+    useState<Subscription | null>(null);
 
   // Two actions which we gonna use Supabase to actually fetch from our database.
 
   // Get our user's detail.
-  const getUserDetails = () => supabase.from("users").select("*").single();
+  const getUserDetails = () =>
+    supabase.from("users").select("*").single();
   // Get our subscription detail.
   const getSubscription = () =>
     supabase
@@ -60,10 +69,14 @@ export const MyUserContextProvider = (props: Props) => {
           const subscriptionPromise = result[1];
 
           if (userDetailPromise.status === "fulfilled") {
-            setUserDetails(userDetailPromise.value.data as UserDetails);
+            setUserDetails(
+              userDetailPromise.value.data as UserDetails
+            );
           }
           if (subscriptionPromise.status === "fulfilled") {
-            setSubscription(subscriptionPromise.value.data as Subscription);
+            setSubscription(
+              subscriptionPromise.value.data as Subscription
+            );
           }
 
           setIsLoadingData(false);
@@ -91,7 +104,9 @@ export const useUser = () => {
 
   // Throw error if trying to use this Hooks outside of our context.
   if (context === undefined) {
-    throw new Error("useUser must be used within a MyUserContextProvider");
+    throw new Error(
+      "useUser must be used within a MyUserContextProvider"
+    );
   }
 
   return context;
