@@ -23,6 +23,8 @@ const LikedButton: React.FC<LikedButtonProps> = ({
   const router = useRouter();
 
   //get supabase Client.
+  //useSessionContext will have authendication.
+  //useSupabaseClient will not include auth.
   const { supabaseClient } = useSessionContext();
 
   //get user info.
