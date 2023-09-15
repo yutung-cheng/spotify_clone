@@ -1,14 +1,15 @@
 "use client";
 
 import SongItem from "@/app/components/SongItem";
-import { Song } from "@/types";
+import { LikedSongs } from "@/types";
 
-interface PageContentProps {
-  songs: Song[];
+interface LikedSongsContentProps {
+  songs: LikedSongs[];
 }
 
-const PageContent: React.FC<PageContentProps> = ({ songs }) => {
+const LikedSongContent: React.FC<LikedSongsContentProps> = ({ songs }) => {
   {
+    console.log("songs", songs);
     if (songs.length === 0) {
       return (
         <div className="mt-2 ml-6 text-neutral-400">No songs available</div>
@@ -17,11 +18,13 @@ const PageContent: React.FC<PageContentProps> = ({ songs }) => {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-4 mt-4">
         {songs.map((song) => {
-          return <SongItem key={song.id} onClick={() => {}} song={song} />;
+          const { songs } = song;
+
+          return <SongItem key={songs.id} onClick={() => {}} song={songs} />;
         })}
       </div>
     );
   }
 };
 
-export default PageContent;
+export default LikedSongContent;

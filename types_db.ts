@@ -36,16 +36,19 @@ export interface Database {
           created_at: string;
           song_id: number;
           user_id: string;
+          title: string;
         };
         Insert: {
           created_at?: string;
           song_id: number;
           user_id: string;
+          title: string;
         };
         Update: {
           created_at?: string;
           song_id?: number;
           user_id?: string;
+          title: string;
         };
         Relationships: [
           {
