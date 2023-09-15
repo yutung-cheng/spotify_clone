@@ -12,8 +12,8 @@ const LikedSongs = async () => {
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header>
         <div className="mt-10">
-          <div className="flex flex-col md:flex-row items-center gap-x-5">
-            <div className="relative h-32 w-32 lg:h-44 lg:w-44">
+          <div className="flex flex-row md:flex-row sm:flex-row items-center gap-x-5">
+            <div className=" bg-red-600 relative aspect-square h-16 w-16 lg:h-32 lg:w-32 md:h-24 md:w-24 sm:h-24 sm:w-24">
               <Image
                 fill
                 src="/images/liked.png"

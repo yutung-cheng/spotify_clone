@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Song } from "@/types";
 import useLoadImage from "../hooks/useLoadImage";
 import PlayButton from "./buttons/PlayButton";
+import LikedButton from "./buttons/LikedButton";
 
 interface SongItemProps {
   song: Song;
@@ -34,6 +35,9 @@ const SongItem: React.FC<SongItemProps> = ({ song, onClick }) => {
         <p className="text-sm text-neutral-400 truncate w-full pb-4">
           {song.author}
         </p>
+      </div>
+      <div className="absolute top-4 left-4">
+        <LikedButton songId={song.id} title={song.title} />
       </div>
       <div className="absolute bottom-24 right-5">
         <PlayButton />
