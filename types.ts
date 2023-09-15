@@ -10,13 +10,6 @@ export interface Song {
   image_path: string;
 }
 
-export interface LikedSongs {
-  user_id: string;
-  song_id: string;
-  title: string;
-  songs: Song;
-}
-
 export interface UserDetails {
   id: string;
   first_name: string;

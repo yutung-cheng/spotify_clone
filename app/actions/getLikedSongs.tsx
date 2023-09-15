@@ -20,9 +20,14 @@ export const getLikedSongs = async () => {
 
   if (error) {
     console.log("Error Fetching Data", error);
+    return [];
   }
 
-  return (data as any) || [];
+  if (!data) return [];
+
+  return data.map((likedSong) => ({
+    ...likedSong.songs,
+  }));
 };
 
 export default getLikedSongs;

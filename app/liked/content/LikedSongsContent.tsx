@@ -1,10 +1,10 @@
 "use client";
 
 import SongItem from "@/app/components/SongItem";
-import { LikedSongs } from "@/types";
+import { Song } from "@/types";
 
 interface LikedSongsContentProps {
-  songs: LikedSongs[];
+  songs: Song[];
 }
 
 const LikedSongContent: React.FC<LikedSongsContentProps> = ({ songs }) => {
@@ -16,11 +16,9 @@ const LikedSongContent: React.FC<LikedSongsContentProps> = ({ songs }) => {
       );
     }
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-4 mt-4">
+      <div className="px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-4 mt-4">
         {songs.map((song) => {
-          const { songs } = song;
-
-          return <SongItem key={songs.id} onClick={() => {}} song={songs} />;
+          return <SongItem key={song.id} onClick={() => {}} song={song} />;
         })}
       </div>
     );
