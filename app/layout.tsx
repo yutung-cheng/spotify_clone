@@ -33,7 +33,9 @@ export default async function RootLayout({
           <UserProvider>
             <ModalProvider />
             <Sidebar songs={userSongs}>{children}</Sidebar>
-            <Player />
+            <div className="flex h-50 w-full bg-red-500">
+              <Player />
+            </div>
           </UserProvider>
         </SupabaseProvider>
       </body>
