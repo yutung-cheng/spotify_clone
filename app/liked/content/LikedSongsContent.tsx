@@ -1,6 +1,7 @@
 "use client";
 
 import SongItem from "@/app/components/SongItem";
+import useOnPlay from "@/app/hooks/useOnPlay";
 import { useUser } from "@/app/hooks/useUser";
 import { Song } from "@/types";
 import { useRouter } from "next/navigation";
@@ -15,6 +16,7 @@ const LikedSongContent: React.FC<LikedSongsContentProps> = ({
 }) => {
   const router = useRouter();
   const { isLoading, user } = useUser();
+  const onPlay = useOnPlay(songs);
 
   useEffect(() => {
     // Logout will automatically back to home page.
@@ -44,7 +46,11 @@ const LikedSongContent: React.FC<LikedSongsContentProps> = ({
         gap-4 mt-4">
         {songs.map((song) => {
           return (
-            <SongItem key={song.id} onClick={() => {}} song={song} />
+            <SongItem
+              key={song.id}
+              onClick={(id: string) => onPlay(id)}
+              song={song}
+            />
           );
         })}
       </div>

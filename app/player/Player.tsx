@@ -5,18 +5,19 @@ import useGetSongById from "../hooks/useGetSongById";
 import usePlayer from "../hooks/usePlayer";
 import useLoadSongUrl from "../hooks/useLoadSongUrl";
 import PlayerContent from "./content/PlayerContent";
+import {
+  useSessionContext,
+  useUser,
+} from "@supabase/auth-helpers-react";
 
-interface PlayerProps {}
-
-const Player: React.FC<PlayerProps> = () => {
+const Player: React.FC = () => {
   const player = usePlayer();
+  const user = useUser();
   const { song } = useGetSongById(player.activeId);
 
   const songUrl = useLoadSongUrl(song!);
 
-  if (!song || !songUrl || !player.activeId) {
-    console.log("null", song, songUrl, player.activeId);
-
+  if (!song || !songUrl || !player.activeId || !user?.id) {
     return null;
   }
 
