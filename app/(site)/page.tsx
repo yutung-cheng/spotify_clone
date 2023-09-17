@@ -12,6 +12,8 @@ export default async function Home() {
   const songs = await getSongs();
   const likedSongs = await getLikedSongs();
 
+  // throw new Error("error");
+
   return (
     <div className="h-full w-full bg-neutral-900 rounded-lg overflow-hidden overflow-y-auto ">
       <Header>
