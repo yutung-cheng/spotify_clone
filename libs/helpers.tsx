@@ -13,7 +13,7 @@ export const getUrl = () => {
   return url;
 };
 
-const postData = async ({
+export const postData = async ({
   url,
   data,
 }: {
