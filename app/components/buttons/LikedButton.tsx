@@ -50,7 +50,7 @@ const LikedButton: React.FC<LikedButtonProps> = ({
 
       if (!error && data) setIsLiked(true);
       if (error) {
-        console.log("error", error.message);
+        console.log("error fetchData", error.message);
       }
     };
 
