@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const router = useRouter();
 
   //Extract the user from OUR useUser Hook.
-  const { user, subscription } = useUser();
+  const { user } = useUser();
 
   return (
     <div

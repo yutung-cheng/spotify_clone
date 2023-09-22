@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import toast from "react-hot-toast";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
-import { Price, ProductWithPrice } from "@/types";
-import Modal from "./Modal";
-import CustomButton from "./CustomButton";
-import { useUser } from "../hooks/useUser";
 import { postData } from "@/libs/helpers";
 import { getStripe } from "@/libs/stripeClient";
+import { Price, ProductWithPrice } from "@/types";
+
+import Modal from "./Modal";
+import CustomButton from "./CustomButton";
+import useSubscribeModal from "../hooks/useSubscribeModal";
+import { useUser } from "../hooks/useUser";
 
 interface SubscribeModalProps {
   products: ProductWithPrice[];
@@ -27,16 +29,22 @@ const formatPrice = (price: Price) => {
 const SubscribeModal: React.FC<SubscribeModalProps> = ({
   products,
 }) => {
+  const subscribeModal = useSubscribeModal();
   const { user, isLoading, subscription } = useUser();
 
   const [priceIdLoading, setPriceIdLoading] = useState<string>();
 
+  const onChange = (open: boolean) => {
+    if (!open) {
+      subscribeModal.onClose();
+    }
+  };
+
   const handleCheckout = async (price: Price) => {
     setPriceIdLoading(price.id);
-
     if (!user) {
       setPriceIdLoading(undefined);
-      return toast.error("Please login first");
+      return toast.error("Must be logged in");
     }
 
     if (subscription) {
@@ -47,22 +55,21 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
     try {
       const { sessionId } = await postData({
         url: "/api/create-checkout-session",
-        data: {
-          price,
-        },
+        data: { price },
       });
+
       const stripe = await getStripe();
       // Create a custom checkout screen for the currently logged in user.
       stripe?.redirectToCheckout({ sessionId });
-    } catch (e) {
-      toast.error((e as Error)?.message);
+    } catch (error) {
+      return toast.error((error as Error)?.message);
     } finally {
       setPriceIdLoading(undefined);
     }
   };
 
   let content = (
-    <div className="text-center">No Products Available.</div>
+    <div className="text-center">No products available.</div>
   );
 
   if (products.length) {
@@ -70,8 +77,9 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
       <div>
         {products.map((product) => {
           if (!product.prices?.length) {
-            return <div key={product.id}>No Prices available</div>;
+            return <div key={product.id}>No prices available</div>;
           }
+
           return product.prices.map((price) => (
             <CustomButton
               key={price.id}
@@ -94,10 +102,10 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
 
   return (
     <Modal
-      title="Only for premium users."
-      description="Listen to music with Spotify Premium."
+      title="Only for premium users"
+      description="Listen to music with Spotify Premium"
       isOpen
-      onChange={() => {}}>
+      onChange={onChange}>
       {content}
     </Modal>
   );

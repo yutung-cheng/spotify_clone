@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json | undefined }
+  | { [key: string]: Json }
   | Json[];
 
 export interface Database {
@@ -22,48 +22,20 @@ export interface Database {
           id?: string;
           stripe_customer_id?: string | null;
         };
-        Relationships: [
-          {
-            foreignKeyName: "customers_id_fkey";
-            columns: ["id"];
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
       };
       liked_songs: {
         Row: {
-          created_at: string;
           song_id: number;
           user_id: string;
-          title: string;
         };
         Insert: {
-          created_at?: string;
           song_id: number;
           user_id: string;
-          title: string;
         };
         Update: {
-          created_at?: string;
           song_id?: number;
           user_id?: string;
-          title: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: "liked_songs_song_id_fkey";
-            columns: ["song_id"];
-            referencedRelation: "songs";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "liked_songs_user_id_fkey";
-            columns: ["user_id"];
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
       };
       prices: {
         Row: {
@@ -71,7 +43,9 @@ export interface Database {
           currency: string | null;
           description: string | null;
           id: string;
-          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null;
+          interval:
+            | Database["public"]["Enums"]["pricing_plan_interval"]
+            | null;
           interval_count: number | null;
           metadata: Json | null;
           product_id: string | null;
@@ -109,14 +83,6 @@ export interface Database {
           type?: Database["public"]["Enums"]["pricing_type"] | null;
           unit_amount?: number | null;
         };
-        Relationships: [
-          {
-            foreignKeyName: "prices_product_id_fkey";
-            columns: ["product_id"];
-            referencedRelation: "products";
-            referencedColumns: ["id"];
-          }
-        ];
       };
       products: {
         Row: {
@@ -143,12 +109,11 @@ export interface Database {
           metadata?: Json | null;
           name?: string | null;
         };
-        Relationships: [];
       };
       songs: {
         Row: {
           author: string | null;
-          created_at: string;
+          created_at: string | null;
           id: number;
           image_path: string | null;
           song_path: string | null;
@@ -157,7 +122,7 @@ export interface Database {
         };
         Insert: {
           author?: string | null;
-          created_at?: string;
+          created_at?: string | null;
           id?: number;
           image_path?: string | null;
           song_path?: string | null;
@@ -166,21 +131,13 @@ export interface Database {
         };
         Update: {
           author?: string | null;
-          created_at?: string;
+          created_at?: string | null;
           id?: number;
           image_path?: string | null;
           song_path?: string | null;
           title?: string | null;
           user_id?: string | null;
         };
-        Relationships: [
-          {
-            foreignKeyName: "songs_user_id_fkey";
-            columns: ["user_id"];
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
       };
       subscriptions: {
         Row: {
@@ -195,7 +152,9 @@ export interface Database {
           metadata: Json | null;
           price_id: string | null;
           quantity: number | null;
-          status: Database["public"]["Enums"]["subscription_status"] | null;
+          status:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null;
           trial_end: string | null;
           trial_start: string | null;
           user_id: string;
@@ -212,7 +171,9 @@ export interface Database {
           metadata?: Json | null;
           price_id?: string | null;
           quantity?: number | null;
-          status?: Database["public"]["Enums"]["subscription_status"] | null;
+          status?:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null;
           trial_end?: string | null;
           trial_start?: string | null;
           user_id: string;
@@ -229,25 +190,13 @@ export interface Database {
           metadata?: Json | null;
           price_id?: string | null;
           quantity?: number | null;
-          status?: Database["public"]["Enums"]["subscription_status"] | null;
+          status?:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null;
           trial_end?: string | null;
           trial_start?: string | null;
           user_id?: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: "subscriptions_price_id_fkey";
-            columns: ["price_id"];
-            referencedRelation: "prices";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "subscriptions_user_id_fkey";
-            columns: ["user_id"];
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
       };
       users: {
         Row: {
@@ -271,14 +220,6 @@ export interface Database {
           id?: string;
           payment_method?: Json | null;
         };
-        Relationships: [
-          {
-            foreignKeyName: "users_id_fkey";
-            columns: ["id"];
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
       };
     };
     Views: {
