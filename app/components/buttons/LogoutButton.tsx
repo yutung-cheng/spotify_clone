@@ -3,14 +3,17 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import CustomButton from "../CustomButton";
 import toast from "react-hot-toast";
+import usePlayer from "@/app/hooks/usePlayer";
 
 const LogoutButton: React.FC = () => {
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
+  const player = usePlayer();
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
-    // TODO: Reseat any playing songs.
+    // Reseat any playing songs.
+    player.reset();
     router.refresh();
 
     if (error) {

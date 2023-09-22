@@ -21,7 +21,6 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
   const uploadModal = useUploadModal();
   const authModal = useAuthModal();
   const subscribeModal = useSubscribeModal();
-
   const onPlay = useOnPlay(songs);
 
   const onClick = () => {
