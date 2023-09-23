@@ -2,7 +2,7 @@
 
 ![Fullstack Spotify Clone](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/thumbnail.png)
 
-For DEMO, visit [Spotify clone](https://spotify-clone-pzn8gp2mx-yutung-cheng.vercel.app/))
+For DEMO, visit [Spotify clone](https://spotify-clone-pzn8gp2mx-yutung-cheng.vercel.app/)
 
 This is a repository for a Full Stack Spotify Clone with Next.js 13.4 App Router: React, Tailwind, Supabase, PostgreSQL, Stripe
 
@@ -31,7 +31,12 @@ Key Features:
 
 
 ### Screenshots
-
+- Page view (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/pageview.png)
+- Log in dialog (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/login_dialog.png)
+- Subscribe (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/subscribeDialog.png)
+- Search (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/search.png)
+- Supabase (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/database.png)
+- Stripe Test Payment (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/stripePayment.png)
 
 ### Prerequisites
 
