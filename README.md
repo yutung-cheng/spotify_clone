@@ -31,12 +31,12 @@ Key Features:
 
 
 ### Screenshots
-- Page view (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/pageview.png)
-- Log in dialog (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/login_dialog.png)
-- Subscribe (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/subscribeDialog.png)
-- Search (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/search.png)
-- Supabase (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/database.png)
-- Stripe Test Payment (https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/stripePayment.png)
+![Page view](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/pageview.png)
+![Log in dialog](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/login_dialog.png)
+![Subscribe](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/subscribeDialog.png)
+![Search](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/search.png)
+![Supabase](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/database.png)
+![Stripe Test Payment](https://github.com/yutung-cheng/spotify_clone/blob/main/screenshots/stripePayment.png)
 
 ### Prerequisites
 
